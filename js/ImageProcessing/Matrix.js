@@ -25,16 +25,17 @@ export default class Matrix {
         break;
       default:
         return new Matrix(zeros([1,1]));
-        break;
     }
 
-    this.matrix = () => {
-      return matrix;
+    this.matrix = () => matrix;
+    this.parse = () => unpack(matrix);
+    this.parseToString = () => {
+      return unpack(matrix)
+        .map((row) => row.join(' '))
+        .map((col) => col.join(',\n'));
     }
 
-    this.parseMatrix = () => {
-      return unpack(matrix);
-    }
+    return this;
   }
 
   typeCheck(input) {
@@ -55,16 +56,29 @@ export default class Matrix {
   }
 
   conv(kernel) {
-    //let target = zeros()
-    return new Matrix(target);
+    let out = zeros(this.matrix.shape());
+    conv(out, this.matrix(), kernel.matrix());
+    return new Matrix(out);
   }
 
   multiply(mat) {
-    return new Matrix(target);
+    let out = zeros(this.matrix().shape()[0], mat.matrix().shape()[1]);
+    mult(out, this.matrix(), mat.matrix());
+    return new Matrix(out);
   }
 
+  // element-wise exponentiation
   exp(ord) {
-    return new Matrix(target);
+    let copy = pack(unpack(this.matrix()));
+    ops(copy, ord);
+    return new Matrix(copy);
+  }
+
+  // element-wise multiplication
+  scalarMult(scalar) {
+    let out = zeros(this.matrix());
+    ops.mul(out, this.matrix(), scalar);
+    return new Matrix(out);
   }
 
 }
