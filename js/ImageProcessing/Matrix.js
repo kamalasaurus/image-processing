@@ -39,7 +39,11 @@ export default class Matrix {
   }
 
   typeCheck(input) {
-    const types = [isnd, Array.isArray, (el) => el.constructor === String];
+    const types = [
+      isnd,
+      Array.isArray,
+      (str) => str.constructor === String
+    ];
     return types
       .map((check) => check(input))
       .indexOf(true);
@@ -82,3 +86,4 @@ export default class Matrix {
   }
 
 }
+
