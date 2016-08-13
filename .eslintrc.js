@@ -12,6 +12,7 @@ module.exports = {
       "import/no-extraneous-dependencies": 0,
       "wrap-iife": 0,
       "no-void": 0,
-      "react/require-extension": 0
+      "react/require-extension": 0,
+      "arrow-body-style": 0
     }
 };
