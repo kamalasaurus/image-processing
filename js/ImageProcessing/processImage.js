@@ -6,9 +6,12 @@ import cannyFilter from './cannyFilter';
 import drawCanvas from './drawCanvas';
 
 export default function processImage(image) {
-  const matx = new Matrix(fromImage(image));
+  const reader = new FileReader();
+  reader.readAsDataURL(image);
+
+  const matx = new Matrix(fromImage(reader.result));
   const processedMatx = cannyFilter(matx);
-  const processedImage = toImage(processedMatx);
+  const processedImage = toImage(processedMatx, 'canvas');
   drawCanvas(processedImage);
 
   return;
