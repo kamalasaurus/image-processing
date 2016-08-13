@@ -50,16 +50,21 @@ export default class Matrix {
     return pack(nestedArrays);
   }
 
-  conv(kernel) {
+  size() {
+    return this.matrix().shape();
+  }
 
+  conv(kernel) {
+    //let target = zeros()
+    return new Matrix(target);
   }
 
   multiply(mat) {
-
+    return new Matrix(target);
   }
 
   exp(ord) {
-
+    return new Matrix(target);
   }
 
 }

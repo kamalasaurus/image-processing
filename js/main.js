@@ -2,7 +2,8 @@ import processImage from 'ImageProcessing/processImage';
 
 // event handler
 function submitFile(event) {
-  var fileList = document
+  var fileList = window
+    .document
     .getElementById('file-input')
     .files;
 
@@ -16,7 +17,8 @@ function submitFile(event) {
 
 // main function adds click-event listener on submit button
 void function() {
-  document
+  window
+    .document
     .getElementById('submit')
     .addEventListener('click', submitFile);
 }();
