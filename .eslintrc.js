@@ -11,6 +11,7 @@ module.exports = {
       "import/no-unresolved": 0,
       "import/no-extraneous-dependencies": 0,
       "wrap-iife": 0,
-      "no-void": 0
+      "no-void": 0,
+      "react/require-extension": 0
     }
 };
