@@ -2,20 +2,22 @@ import processImage from './ImageProcessing/processImage';
 
 // event handler
 function submitFile(event) {
-  let fileList = document
+  const fileList = document
     .getElementById('file-input')
     .files;
 
-  fileList.length > 0
-    ? processImage(fileList[0])
-    : console.error("no files uploaded!");
+  if (fileList.length > 0) {
+    processImage(fileList[0]);
+  } else {
+    console.error('no files uploaded!');
+  }
 
   event.stopPropagation();
   return false;
 }
 
 // main function adds click-event listener on submit button
-void function() {
+void function init() {
   document
     .getElementById('submit')
     .addEventListener('click', submitFile);

@@ -1,12 +1,13 @@
 
 // This should be a monad that always returns a new Matrix object
 
-import ops from "ndarray-ops"
-import mult from "ndarray-gemm";
-import pack from "ndarray-pack";
-import unpack from "ndarray-unpack";
-import isnd from "isndarray";
-import zeros from "zeros";
+import ops from 'ndarray-ops';
+import mult from 'ndarray-gemm';
+import conv from 'ndarray-convolve';
+import pack from 'ndarray-pack';
+import unpack from 'ndarray-unpack';
+import isnd from 'isndarray';
+import zeros from 'zeros';
 
 export default class Matrix {
 
@@ -24,7 +25,7 @@ export default class Matrix {
         matrix = this.parseStringInput(input);
         break;
       default:
-        return new Matrix(zeros([1,1]));
+        return new Matrix(zeros([1, 1]));
     }
 
     this.matrix = () => matrix;
@@ -33,7 +34,7 @@ export default class Matrix {
       return unpack(matrix)
         .map((row) => row.join(' '))
         .map((col) => col.join(',\n'));
-    }
+    };
 
     return this;
   }
@@ -42,7 +43,7 @@ export default class Matrix {
     const types = [
       isnd,
       Array.isArray,
-      (str) => str.constructor === String
+      (str) => str.constructor === String,
     ];
     return types
       .map((check) => check(input))
@@ -60,27 +61,27 @@ export default class Matrix {
   }
 
   conv(kernel) {
-    let out = zeros(this.matrix.shape());
+    const out = zeros(this.matrix.shape());
     conv(out, this.matrix(), kernel.matrix());
     return new Matrix(out);
   }
 
   multiply(mat) {
-    let out = zeros(this.matrix().shape()[0], mat.matrix().shape()[1]);
+    const out = zeros(this.matrix().shape()[0], mat.matrix().shape()[1]);
     mult(out, this.matrix(), mat.matrix());
     return new Matrix(out);
   }
 
   // element-wise exponentiation
   exp(ord) {
-    let copy = pack(unpack(this.matrix()));
+    const copy = pack(unpack(this.matrix()));
     ops(copy, ord);
     return new Matrix(copy);
   }
 
   // element-wise multiplication
   scalarMult(scalar) {
-    let out = zeros(this.matrix());
+    const out = zeros(this.matrix());
     ops.mul(out, this.matrix(), scalar);
     return new Matrix(out);
   }
