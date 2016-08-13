@@ -4,7 +4,7 @@ export default function drawCanvas(imageURL) {
     document
       .getElementById('processed-image')
       .appendChild(img);
-  }
+  };
   img.src = imageURL;
 }
 
