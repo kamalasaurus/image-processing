@@ -11,3 +11,8 @@ INCLUDE THE PROPER IGNORE RULE FOR SYSTEMJS MODULE RESOLVER
 
 WHYYYYYYYYY I HATE GIT!
 
+https://github.com/eugeneware/jpeg-js
+https://github.com/feross/buffer
+
+^^ have to fix get-pixels npm module!  WHY
+

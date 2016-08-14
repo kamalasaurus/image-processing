@@ -15,7 +15,7 @@ export default class Matrix {
   constructor(input) {
     let matrix;
 
-    switch (this.typeheck(input)) {
+    switch (this.typeCheck(input)) {
       case 0:
         matrix = input;
         break;
@@ -44,7 +44,7 @@ export default class Matrix {
     const types = [
       isnd,
       Array.isArray,
-      (str) => str.constructor === String,
+      (str) => str && str.constructor === String,
     ];
     return types
       .map((check) => check(input))
