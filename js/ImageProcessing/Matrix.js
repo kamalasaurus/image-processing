@@ -4,6 +4,7 @@
 import ops from 'ndarray-ops';
 import mult from 'ndarray-gemm';
 import conv from 'ndarray-convolve';
+import gauss from 'ndarray-gaussian-filter';
 import pack from 'ndarray-pack';
 import unpack from 'ndarray-unpack';
 import isnd from 'isndarray';
@@ -61,13 +62,13 @@ export default class Matrix {
   }
 
   conv(kernel) {
-    const out = zeros(this.matrix.shape());
+    const out = zeros(this.size());
     conv(out, this.matrix(), kernel.matrix());
     return new Matrix(out);
   }
 
   multiply(mat) {
-    const out = zeros(this.matrix().shape()[0], mat.matrix().shape()[1]);
+    const out = zeros(this.size()[0], mat.size()[1]);
     mult(out, this.matrix(), mat.matrix());
     return new Matrix(out);
   }
@@ -81,9 +82,16 @@ export default class Matrix {
 
   // element-wise multiplication
   scalarMult(scalar) {
-    const out = zeros(this.matrix());
+    const out = zeros(this.size());
     ops.mul(out, this.matrix(), scalar);
     return new Matrix(out);
+  }
+
+  blur(radius) {
+    const out = zeros(this.size());
+    ops.adds(out, this.matrix(), 0);
+    gauss(out, radius);
+    return out;
   }
 
 }

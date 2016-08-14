@@ -1,6 +1,5 @@
 import processImage from './ImageProcessing/processImage';
 
-// event handler
 function submitFile(event) {
   const fileList = document
     .getElementById('file-input')
@@ -16,7 +15,6 @@ function submitFile(event) {
   return false;
 }
 
-// main function adds click-event listener on submit button
 void function init() {
   document
     .getElementById('submit')
