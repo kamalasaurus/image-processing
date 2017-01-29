@@ -27,6 +27,7 @@ export default class Matrix {
         break;
       default:
         return new Matrix(zeros([1, 1]));
+        break;
     }
 
     this.matrix = () => matrix;
