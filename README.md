@@ -1,15 +1,14 @@
 TODO
 
-CONFIGURE JSPM TO IMPORT PROPERLY UGHH
-RECREATE MATRIX LOGIC UGHHH
-CONFIGURE ESLINT UGHHHH
-CONFIGURE CANVAS TO RECEIVE MODIFIED IMAGE UGGHHH
+configure jspm to import properly
+recreate matrix logic?
+configure eslint
+configure canvas to recieve modified image
 
 FOR KESTRYL:
-INCLUDE eslint --init
-INCLUDE THE PROPER IGNORE RULE FOR SYSTEMJS MODULE RESOLVER
 
-WHYYYYYYYYY I HATE GIT!
+include eslint --init
+include proper ignore rule for systemjs module resolver
 
 https://github.com/eugeneware/jpeg-js
 https://github.com/feross/buffer
